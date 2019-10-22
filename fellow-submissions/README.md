@@ -3,18 +3,18 @@
 1. How do variables declared with `let`, `const`, and `var` differ? Be sure to touch on _scope_, _reassignment_, and _hoisting_ for each.
 
 2. What will the following code log? Why?
-  ```javascript
-  let a = 'outer';
+    ```javascript
+    let a = 'outer';
 
-  function testScope() {
-    let a = 'inner';
+    function testScope() {
+      let a = 'inner';
+      console.log(a);
+    }
+
     console.log(a);
-  }
-
-  console.log(a);
-  testScope();
-  console.log(a);
-  ```
+    testScope();
+    console.log(a);
+    ```
 
 3. What will the following code log? Why?
     ```javascript
