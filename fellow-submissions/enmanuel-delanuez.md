@@ -27,7 +27,7 @@
     hello();
     console.log(a);
     ```
-    - This snippet returns a `ReferenceError` along the lines of `a is not defined`. This occurs because the console log refers to a variable outside of its global scope. 
+    - This snippet throws a `ReferenceError` along the lines of `a is not defined`. This occurs because the console log refers to a variable outside of its global scope. 
 
 **4. What does the following code log? Why?**
     ```javascript
@@ -43,7 +43,7 @@
 
     let a = 1;
     ```
-    - This snippet returns a `ReferenceError` because variables with the `let` keyword are hoisted but not initialized at all.
+    - This snippet throws a `ReferenceError` because variables with the `let` keyword are hoisted but not initialized at all.
 
 **6. In the code snippet below, the function declaration comes _after_ the variable declaration in the code below. Why does it still work?**
     ```javascript
@@ -80,7 +80,7 @@
     complete(problemSet);
     console.log(`Status for Problem Set: ${problemSet}`);
     ```
-    - This snippet logs `Status for Problems Set: done` because `problemSet` was the argument os `complete`, a function that reassigned its value to `'done'`.
+    - This snippet logs `Status for Problems Set: undefined` because when `problemSet` is passed to a function it is passed by value. Since the `problemSet` isn't reassiged it remains undefined.
 
 **9. Why does this code throw an error?** 
     ```javascript
@@ -92,7 +92,7 @@
 
     console.log(advice);
     ```
-    - This code returns a error because the variable `advice` is outside of the scope of the console log that refers to it. 
+    - This code throws a error because the variable `advice` is outside of the scope of the console log that refers to it. 
     
 **10. So... why does this code work as intended?**
     ```javascript
@@ -104,4 +104,4 @@
 
     console.log(advice);
     ```
-    - This code 'works' because variable `advice` is hoisted and then assigned `Pack your umbrella.`
+    - This code 'works' because variable `advice` is declared with the keyword `var` and so has function scope, in this code it in inside a block and accessible to the console log.
