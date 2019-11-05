@@ -10,7 +10,7 @@
    its value later on. `let` and `const` are scoped variables, which means that its
    existence can only be detected within its parent scope, whether that be global 
    or local. As for `var` its properties are the same as `let`, except for the fact
-   that its scope is global regardless of the location of its declaration.
+   that it is function scoped, which means its only accessible within the function its declared in.
 
 **2. What will the following code log? Why?**
     ```javascript
@@ -27,14 +27,15 @@
     ```
     This above code will log:
         "outer"
-        "undefined"
+        "inner"
         "outer"
         
     This is logged because the string variable `a` is declared both in the global 
     scope as well as in the local scope of the `testScope` function. The value of `a` 
     that gets logged on lines 24 and 26 is "outer" because that's the onlt value of `a`
-    that it has access to. Meanwhile "undefined" is logged because the function `testScope`
-    is referenced, however there is no return value within it, thus "undefined" is logged.
+    that it has access to. Meanwhile "inner" is logged because the function `testScope`
+    is referenced, however the only value of 'a' it has access to is the one within the function,
+    thus "inner" is logged.
 
 **3. What will the following code log? Why?**
     ```javascript
@@ -46,13 +47,12 @@
     console.log(a);
     ```
     This above code will log:
-        "undefined"
+    
         "ReferenceError: a is not defined"
     
     This is logged because the string variable `a` is declared only in the local scope 
     of the `hello` function, thus trying to log `a` to the console will result in an error.
-    "undefined" is logged because the function `hello` is referenced, however there is no return 
-    value within it, thus "undefined" is logged.
+    
     
 
 **4. What does the following code log? Why?**
@@ -119,9 +119,8 @@
     ```
     
     This code logs "Status for Problem Set: undefined". This is because the variable
-    `problemSet` is declared globally, and then initialized locally within the `complete` 
-    function. Therefore, the console log on line 118 has no access to the value assigned 
-    on line 114.
+    `problemSet` is initialized locally within the `complete` function. Therefore, the 
+    console log on line 118 has no access to the value assigned on line 114.
 
 **9. Why does this code throw an error?** 
     ```javascript
@@ -150,5 +149,4 @@
     
     This code works despite the variable `advice` being declared locally because
     it was declared using `var`, and `var` doesn't play by the same rules as `const`
-    or `let`, its accessible globally and locally regardless of the scope of its 
-    declaration location.
+    or `let`, it is function scoped rather than block scoped.
