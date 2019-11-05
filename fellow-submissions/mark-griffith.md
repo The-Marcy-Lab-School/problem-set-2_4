@@ -2,7 +2,7 @@
 
 **1. How do variables declared with `let`, `const`, and `var` differ? Be sure to touch on _scope_, _reassignment_, and _hoisting_ for each.**
    
-   Var is a globally scoped variable that can be reassigned.It also can be declared again, but don't do this. The variable is hoisted.
+   Var is a function scoped variable that can be reassigned.It also can be declared again, but don't do this. The variable is hoisted.
    Let is a block scoped variable that can be reassigned.This variable can not be hoisted.
    Const is a block scoped variable that cannot be reassigned.This variable can not be hoisted.
    
@@ -19,9 +19,9 @@
     testScope();
     console.log(a);
     ```
-    The console will log "outer" then "inner" the "outer".
-    The first time a is logged it references the globally scoped value and logs.
-    Since "inner" is in the functiom scope JavaScript will run with the value of a within that scope. So the function logs the inner value.
+    The console will log `outer` then `inner` the `outer`.
+    The first time `a` is logged it references the globally scoped value and logs.
+    Since `inner` is in the functiom scope JavaScript will run with the value of a within that scope. So the function logs the inner value.
     Finally the console logs the original value of a since it was only reassigned in the function scope and not the global scope. 
     
 **3. What will the following code log? Why?**
@@ -44,7 +44,7 @@
 
     var a = 1;
     ```
-    This code will log 1 since the variable declared by the var keyword would be hoisted up when called.
+    This code will log undefined since the variable is declared after the log. Since the log is not in function scope the variable is not seen.
   
 **5. What does the following code log? Why?**
     ```javascript
@@ -52,7 +52,7 @@
 
     let a = 1;
     ```
-    This will not run because variables declared with the let keyword are not hoisted.
+    This will throw a Reference Error because variables declared with the let keyword are not hoisted.
 
 **6. In the code snippet below, the function declaration comes _after_ the variable declaration in the code below. Why does it still work?**
     ```javascript
@@ -94,6 +94,7 @@
     ```
     The first line will return undefined and the second will log "Status for Problem Set: undefined".
     Since complete(problemSet) is referencing the variable problemSet it will take its value which will return undefined since it was not reassigned in the function.
+    In the function nothing is returned to the reassignment stays in the local scope.
     As a consequence the second line logs undefined because of the same problem.
     
 **9. Why does this code throw an error?** 
@@ -119,4 +120,4 @@
 
     console.log(advice);
     ```
-    Variables declared under the var keyword are globally scoped so the value is accessable in this case.
+    Variables declared under the var keyword are function scoped so the value is accessable in this case.
