@@ -1,7 +1,7 @@
 # Problem Set 2.4 - Scope
 
 **1. How do variables declared with `let`, `const`, and `var` differ? Be sure to touch on _scope_, _reassignment_, and _hoisting_ for each.**
-    Variables starting with var can have either global scope or a function scope, which is like having a bubble around the variable
+    Variables declared with var can have either global scope or a function scope, which is like having a bubble around the variable
     that is created depending on where it is declared. This allows you to initialize a variable before and after the variable has been
     delared.Var variables can be reassigned as many times as you want just as long as the reassigning is being done in its scope. When 
     being hoisted, only the var variables declaration will be "read" first, then as the program is compiled it will read the initialization. 
@@ -57,7 +57,8 @@
    This will console log:
    Undefined
    
-   Because even though the variable is being hoisted, only the declaration is being read so it isn't initialized until it is fully compiled. 
+   Because even though the variable is being hoisted, only the declaration is being read so the value cannot be referenced until the variable is
+   initialized on line 3. 
    
 **5. What does the following code log? Why?**
     ```javascript
@@ -66,9 +67,9 @@
     let a = 1;
     ```
     This will console log:
-    a is undefined
+    an error 
     
-    Because let variables don't get hoisted, they don't exist before they are declared. So the variable a is something that doesn't exist
+    Because let variables don't get hoisted, they can't be referenced before they are declared. 
     
 **6. In the code snippet below, the function declaration comes _after_ the variable declaration in the code below. Why does it still work?**
     ```javascript
@@ -88,13 +89,13 @@
     sayItLoud();
 
     function sayItLoud() {
-      console.log(`${greeting}!!!}`)
+      console.log(`${greeting}!!!`)
     }
 
     let greeting = "Hello"
     ```
-    This doesn't work because the function sayItLoud doesn't exist inside the variables greeting's scope so greeting inside the function doesn't
-    exist.
+    This doesn't work because the function is called before it is declared and initialized, so the function sayItLoud can't be accessed on line 89
+    and throws an error
 
 **8. What does the following code log? Why?**
     ```javascript
@@ -110,7 +111,7 @@
     This will console log:
     undefined
     
-    Because the variable problemSet is declared but not initialized, and it's being console logged in it's scope so it exists but has no value.
+    Because the variable problemSet is declared but not initialized, and it's being console logged in it's scope so it can be referenced but has no value.
 
 **9. Why does this code throw an error?** 
     ```javascript
@@ -122,7 +123,8 @@
 
     console.log(advice);
     ```
-    This throws an error because the variable advice doesn't exist outside of the if function since it can't be hoisted.
+    This throws an error because the variable advice creates its own block scope inside the if statement and can't be accessed outside of it's 
+    block scope.
 
 **10. So... why does this code work as intended?**
     ```javascript
@@ -134,5 +136,6 @@
 
     console.log(advice);
     ```
-    This works because the variable advice gets hoisted so it exists before the variable is even declared. 
+    This works because the variable advice creates it's function scope and since the if statement is a conditional and not a function
+    advice can be accessed outside of it. 
     
