@@ -75,9 +75,9 @@
 
 9. Why does this code throw an error? 
     ```javascript
-    const isSunny🌞 = true;
+    const isSunny = true;
 
-    if (isSunny🌞) {
+    if (isSunny) {
       let advice = 'Wear your sunshades!';
     }
 
@@ -87,9 +87,9 @@
 
 10. So... why does this code work as intended?
     ```javascript
-    const isRainy🌧 = true;
+    const isRainy = true;
 
-    if (isRainy🌧) {
+    if (isRainy) {
       var advice = 'Pack your umbrella.';
     }
 
