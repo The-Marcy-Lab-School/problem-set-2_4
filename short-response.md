@@ -55,7 +55,7 @@
     sayItLoud();
 
     function sayItLoud() {
-      console.log(`${greeting}!!!}`)
+      console.log(`${greeting}!!!`)
     }
 
     let greeting = "Hello"
